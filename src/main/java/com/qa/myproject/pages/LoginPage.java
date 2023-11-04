@@ -1,7 +1,10 @@
 package com.qa.myproject.pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
 
@@ -55,10 +58,20 @@ public class LoginPage {
 //
 //	}
 
-	public void doLogin(String un, String pwd) {
+	
+	/**
+	 * After clicking button/link, if we're landing on a new page, 
+	 * it's a method responsibility to return the next landing page class object(Home Page)
+	 * Mouse over to create a landing page (Test Driven Development - TDD Approach)(Page chaining model)
+	 * @param un
+	 * @param pwd
+	 */
+	public UserProfilePage doLogin(String un, String pwd) {
 		driver.findElement(username).sendKeys(un);
 		driver.findElement(password).sendKeys(pwd);
 		driver.findElement(submitBtn).click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));//Login page > Next landing page problem
+		return new UserProfilePage(driver);
 	}
 
 }

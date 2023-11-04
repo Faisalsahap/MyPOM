@@ -6,6 +6,7 @@ import org.testng.annotations.BeforeTest;
 
 import com.qa.myproject.factory.DriverFactory;
 import com.qa.myproject.pages.LoginPage;
+import com.qa.myproject.pages.UserProfilePage;
 
 public class BaseTest {
 	
@@ -19,12 +20,15 @@ public class BaseTest {
 	DriverFactory df;
 	WebDriver driver;
 	protected LoginPage loginPage;
+	protected UserProfilePage userProfilePage;
 
 	@BeforeTest
 	public void setup() {
 		df = new DriverFactory();
 		driver = df.initDriver("chrome");
 		loginPage = new LoginPage(driver);
+//		loginPage.doLogin("faisal", "Mf$9788241519"); //We have to first login to land user profile page. 
+//											   //But it will disturb loginPageTest (already logged in) 
 
 	}
 

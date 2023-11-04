@@ -11,6 +11,7 @@ import com.qa.myproject.base.BaseTest;
  * DO NOT CREATE UNNECESSARY OBJECTS IN TEST CLASS. (Not a good practice to create a object for every TC)
  * CREATE THE OBJECTS IN BASE TEST.
  * TESTNG RESPONSIBILITY -> WRITING TEST CASES AND ASSERTIONS.
+ * Test should not have any selenium code
  * 
  */
 public class LoginPageTest extends BaseTest {
