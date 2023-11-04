@@ -7,6 +7,9 @@ import org.openqa.selenium.safari.SafariDriver;
 
 public class DriverFactory {
 
+/**
+ * Always prefer the cross-bowser logic to initialize the driver
+ */
 	public WebDriver driver;
 
 	public WebDriver initDriver(String browserName) {
@@ -30,7 +33,7 @@ public class DriverFactory {
 
 		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
-		driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/login");
+		driver.get("https://yaabitech.com/user/login?logred=");
 		return driver;
 
 	}
