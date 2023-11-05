@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.qa.myproject.base.BaseTest;
+import com.qa.myproject.constants.AppConstants;
 
 public class UserProfilePageTest extends BaseTest {
 
@@ -24,24 +25,24 @@ public class UserProfilePageTest extends BaseTest {
 		userProfilePage = loginPage.doLogin("faisal", "Mf$9788241519");
 	}
 
-	@Test
+	@Test(priority = 1)
 	public void userProfilePageTitleTest() {
 		String actTitle = userProfilePage.getHomePageTitle();
-		Assert.assertEquals(actTitle, "faisal user profile");
+		Assert.assertEquals(actTitle,AppConstants.USER_PROFILE_PAGE_TITLE_VALUE);
 	}
 
-	@Test
+	@Test(priority = 2)
 	public void userProfilePageURLTest() {
 		String actURL = userProfilePage.getHomePageURL();
-		Assert.assertTrue(actURL.contains("/user/profile"));
+		Assert.assertTrue(actURL.contains(AppConstants.USER_PROFILE_PAGE_URL_FRACTION_VALUE));
 	}
 	
-	@Test
+	@Test(priority = 3)
 	public void isLogoutLinkExistTest() {
 		Assert.assertTrue(userProfilePage.isLogoutLinkExist());
 	}
 	
-	@Test
+	@Test(priority = 4)
 	public void homePageHeadersTest() {
 		List<String> actualHomeHeaderList = userProfilePage.getUserProfilePageEditLinksList();
 		Assert.assertEquals(actualHomeHeaderList.size(), 3);

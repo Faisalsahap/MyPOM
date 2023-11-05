@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.qa.myproject.base.BaseTest;
+import com.qa.myproject.constants.AppConstants;
 
 
 /**
@@ -16,18 +17,18 @@ import com.qa.myproject.base.BaseTest;
  */
 public class LoginPageTest extends BaseTest {
 
-	@Test
+	@Test(priority = 1)
 	public void LoginPageTitleTest() {
 
 		String actualTitle = loginPage.getLoginPageTitle();
-		Assert.assertEquals(actualTitle, "Sign in to your Yaabitech account");
+		Assert.assertEquals(actualTitle, AppConstants.LOGIN_PAGE_TITLE_VALUE);
 	}
 
-	@Test
+	@Test(priority = 2)
 	public void LoginPageURLTest() {
 
 		String actualURL = loginPage.getLoginPageURL();
-		Assert.assertTrue(actualURL.contains("/user/login?logred"));
+		Assert.assertTrue(actualURL.contains(AppConstants.LOGIN_PAGE_URL_FRACTION_VALUE));
 	}
 	
 //	@Test 
@@ -39,7 +40,7 @@ public class LoginPageTest extends BaseTest {
 	/**
 	 * Can assert only if the method return something.
 	 */
-	@Test
+	@Test(priority = 3)
 	public void loginTest() {
 		loginPage.doLogin("faisal", "Mf$9788241519");
 	}
