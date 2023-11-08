@@ -23,18 +23,24 @@ import com.qa.myproject.factory.DriverFactory;
 public class ElementUtil {
 
 	private WebDriver driver;
-//	private JavaScriptUtil jsUtil;
+	private JavaScriptUtil jsUtil; //Use the JSUtil
 
 	public ElementUtil(WebDriver driver) {
 		this.driver = driver;
-//		jsUtil = new JavaScriptUtil(driver);
+		jsUtil = new JavaScriptUtil(driver);//SID 123
 	}
 
+	/**
+	 * We need to Highlight all element 
+	 * @param locator
+	 * @return
+	 */
 	public WebElement getElement(By locator) {
 		WebElement element = driver.findElement(locator);
-//		if (Boolean.parseBoolean(DriverFactory.highlight)) {
-//			jsUtil.flash(element);
-//		}
+		//There's no prop ref in eleUtil. So, create and use it from DriverFactory
+		if (Boolean.parseBoolean(DriverFactory.highlight)) {
+			jsUtil.flash(element);
+		}
 		return element;
 	}
 

@@ -15,7 +15,7 @@ public class BaseTest {
 	/**
 	 * Initialize the driver, pages with reference
 	 * Create objects here only(not in test class)
-	 * Access modifier -> protected (same/diff. package, child classes). We can use public too (avail for all)
+	 * Access modifier(specifiers) -> protected (same/diff. package, child classes). We can use public too (avail for all)
 	 * initDriver returns driver, so created the WebDriver reference to store it.
 	 * Iniialized the driver at class level, so we can use it inside.(tearDown)
 	 */
