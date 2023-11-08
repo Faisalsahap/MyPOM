@@ -78,7 +78,7 @@ public class LoginPage {
 //		driver.findElement(username).sendKeys(un);
 //		driver.findElement(password).sendKeys(pwd);
 //		driver.findElement(submitBtn).click();
-		
+		System.out.println("App credentials are: " + un + ":" + pwd);
 		eleUtil.waitForElementVisible(username, AppConstants.DEFAULT_MEDIUM_TIME_OUT).sendKeys(un);
 		eleUtil.doSendKeys(password, pwd);//for pwd we no need to wait
 		eleUtil.doClick(submitBtn);

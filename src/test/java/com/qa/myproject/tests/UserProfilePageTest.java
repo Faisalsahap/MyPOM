@@ -22,7 +22,9 @@ public class UserProfilePageTest extends BaseTest {
 
 	@BeforeClass
 	public void userProfilePageSetup() {
-		userProfilePage = loginPage.doLogin("faisal", "Mf$9788241519");
+		userProfilePage = loginPage.doLogin(prop.getProperty("username").trim(), prop.getProperty("password").trim());
+		//protected prop allows us to use the prop in child class
+
 	}
 
 	@Test(priority = 1)
@@ -43,9 +45,20 @@ public class UserProfilePageTest extends BaseTest {
 	}
 	
 	@Test(priority = 4)
-	public void homePageHeadersTest() {
-		List<String> actualHomeHeaderList = userProfilePage.getUserProfilePageEditLinksList();
-		Assert.assertEquals(actualHomeHeaderList.size(), 3);
+	public void userProfileEditLinksTest() {
+		List<String> actualUserEditLinkList = userProfilePage.getUserProfilePageEditLinksList();
+//		Assert.assertEquals(actualUserEditLinkList.size(), 3);
+		Assert.assertEquals(actualUserEditLinkList.size(), AppConstants.USER_PROFILE_HEADERS_COUNT);
 		
 	}
+	
+	@Test(priority = 5)
+	public void userProfileEditLinkValueTest() {
+		List<String> actualUserEditLinkList = userProfilePage.getUserProfilePageEditLinksList();
+		System.out.println("User profile page edit link list: " + actualUserEditLinkList);
+//		Assert.assertEquals(actualArrayList, expectedArrayList);
+		Assert.assertEquals(actualUserEditLinkList, AppConstants.EXPECTED_USER_PROFILE_HEADERS_LIST);
+		
+	}
+	
 }

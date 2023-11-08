@@ -13,7 +13,8 @@ import com.qa.myproject.constants.AppConstants;
  * CREATE THE OBJECTS IN BASE TEST.
  * TESTNG RESPONSIBILITY -> WRITING TEST CASES AND ASSERTIONS.
  * Test should not have any selenium code
- * 
+ * Constants defines application specific values
+ * browser is the framework specific value. So do not use browser as a constant. Use in config.properties
  */
 public class LoginPageTest extends BaseTest {
 
@@ -42,6 +43,6 @@ public class LoginPageTest extends BaseTest {
 	 */
 	@Test(priority = 3)
 	public void loginTest() {
-		loginPage.doLogin("faisal", "Mf$9788241519");
+		loginPage.doLogin(prop.getProperty("username").trim(), prop.getProperty("password").trim());//protected prop allows us to use the prop in child class
 	}
 }

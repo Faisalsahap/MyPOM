@@ -1,5 +1,7 @@
 package com.qa.myproject.base;
 
+import java.util.Properties;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -19,13 +21,20 @@ public class BaseTest {
 	 */
 	DriverFactory df;
 	WebDriver driver;
+	protected Properties prop;
 	protected LoginPage loginPage;
 	protected UserProfilePage userProfilePage;
 
+	/**
+	 * before initDriver, we have to initProp > Create a prop reference use that holding parameter.
+	 * prop contains all the properties. So we can use that prop instaead of browserName in DriverFactory.
+	 * Otherwise we have to pass all the prop parameters as CSV.
+	 */
 	@BeforeTest
 	public void setup() {
 		df = new DriverFactory();
-		driver = df.initDriver("chrome");
+		prop = df.initProp();
+		driver = df.initDriver(prop);
 		loginPage = new LoginPage(driver);
 //		loginPage.doLogin("faisal", "Mf$9788241519"); //We have to first login to land user profile page. 
 //											   //But it will disturb loginPageTest (already logged in) 
